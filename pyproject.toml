@@ -24,6 +24,7 @@ musicnn = [
 
 [project.scripts]
 sortmyset = "sortmyset.cli:main"
+sortmyset-gui = "sortmyset.gui:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -17,6 +17,7 @@ from sortmyset.xml_library import (
     location_to_path,
     select_playlist,
 )
+from sortmyset.gui import playlist_names
 
 
 def library_data():
@@ -31,6 +32,13 @@ def library_data():
 
 
 class SortMySetTests(unittest.TestCase):
+    def test_gui_playlist_names(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "source.xml"
+            with source.open("wb") as handle:
+                plistlib.dump(library_data(), handle, fmt=plistlib.FMT_XML)
+            self.assertEqual(playlist_names(str(source)), ["Test"])
+
     def test_location_conversion(self):
         self.assertEqual(location_to_path("file:///tmp/a%20b.mp3"), Path("/tmp/a b.mp3"))
         self.assertIsNone(location_to_path("https://example.com/a"))
