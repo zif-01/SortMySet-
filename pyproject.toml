@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sortmyset"
+version = "0.1.0"
+description = "Sort an Apple Music XML playlist for smoother DJ transitions"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+audio = [
+    "numpy>=1.26,<2.0",
+    "librosa>=0.10,<1.0",
+    "soundfile>=0.12,<0.13",
+]
+musicnn = [
+    "numpy>=1.26,<2.0",
+    "librosa>=0.10,<1.0",
+    "soundfile>=0.12,<0.13",
+    "tensorflow-cpu>=2.16,<2.20; python_version >= '3.10' and python_version < '3.13'",
+]
+
+[project.scripts]
+sortmyset = "sortmyset.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

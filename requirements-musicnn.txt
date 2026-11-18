@@ -1,0 +1,8 @@
+# musicnn 0.1.0 declares obsolete NumPy/TensorFlow 1.x constraints.
+# Install with: python -m pip install -r requirements-musicnn.txt
+--only-binary=:all:
+numpy>=1.26,<2.0
+librosa>=0.10,<1.0
+tensorflow-cpu>=2.16,<2.20; python_version >= "3.10" and python_version < "3.13"
+--no-deps
+musicnn==0.1.0
